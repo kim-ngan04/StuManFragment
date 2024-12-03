@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/studentListFragment">
+
+    <!-- Fragment hiển thị danh sách sinh viên -->
+    <fragment
+        android:id="@+id/studentListFragment"
+        android:name="com.example.studentmanfragment.StudentListFragment"
+        android:label="Student List">
+        <!-- Action chuyển đến Add Student Fragment -->
+        <action
+            android:id="@+id/action_list_to_add"
+            app:destination="@id/addStudentFragment" />
+        <!-- Action chuyển đến Edit Student Fragment, truyền các đối số -->
+        <action
+            android:id="@+id/action_list_to_edit"
+            app:destination="@id/editStudentFragment">
+            <argument
+                android:name="studentPosition"
+                app:argType="integer" />
+            <argument
+                android:name="studentName"
+                app:argType="string" />
+            <argument
+                android:name="studentId"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <!-- Fragment thêm sinh viên mới -->
+    <fragment
+        android:id="@+id/addStudentFragment"
+        android:name="com.example.studentmanfragment.AddStudentFragment"
+        android:label="Add Student" />
+
+    <!-- Fragment sửa thông tin sinh viên -->
+    <fragment
+        android:id="@+id/editStudentFragment"
+        android:name="com.example.studentmanfragment.EditStudentFragment"
+        android:label="Edit Student">
+        <!-- Định nghĩa các đối số truyền vào EditStudentFragment -->
+        <argument
+            android:name="studentPosition"
+            app:argType="integer" />
+        <argument
+            android:name="studentName"
+            app:argType="string" />
+        <argument
+            android:name="studentId"
+            app:argType="string" />
+    </fragment>
+</navigation>
